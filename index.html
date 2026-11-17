@@ -4,10 +4,20 @@
 <style>
 :root{color-scheme:dark;--bg:#08111e;--panel:#122138;--line:#2a4059;--text:#edf5ff;--muted:#a1b4c9;--cyan:#46d5e6}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -20%,#183653,transparent 55%),var(--bg);color:var(--text);font:14px/1.6 system-ui,Segoe UI,sans-serif}a{color:#7cdeee;text-decoration:none}a:hover{text-decoration:underline}button,input,select{font:inherit}button{cursor:pointer}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}aside{background:#0a1728;border-right:1px solid var(--line);padding:25px 16px;position:sticky;top:0;height:100vh}.brand{font-size:18px;line-height:1.25;font-weight:850;margin-bottom:30px}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);margin:6px 0}.nav{width:100%;text-align:left;border:1px solid transparent;border-radius:9px;background:none;color:var(--muted);padding:12px;margin:3px 0}.nav.active,.nav:hover{background:#17364b;border-color:#315a74;color:white}.sidefoot{position:absolute;bottom:20px;color:#8aa2b9;font-size:12px}.main{padding:0 30px 40px;min-width:0}.top{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line);gap:12px}.top small,.muted{color:var(--muted)}.page{max-width:1180px;margin:32px auto}.view{display:none}.view.active{display:block}.eyebrow{letter-spacing:1.8px;text-transform:uppercase;font-size:11px;color:var(--cyan);font-weight:800}h1{font-size:clamp(26px,4vw,39px);margin:8px 0}h2{font-size:20px;margin:0 0 14px}h3{font-size:17px;margin:0}.lead{font-size:15px;color:var(--muted);max-width:850px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:24px 0}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.panel{background:linear-gradient(145deg,#14263d,#101c2e);border:1px solid var(--line);border-radius:13px;padding:20px;min-width:0}.metric{font-size:30px;font-weight:800;display:block}.label{color:var(--muted);font-size:12px}.btn{background:#183f57;color:#e9faff;border:1px solid #386482;border-radius:8px;padding:10px 14px;display:inline-block;font-weight:700;text-decoration:none;margin:5px 6px 5px 0}.btn.primary{background:linear-gradient(100deg,#1689a6,#346ab6)}.btn:hover{background:#28536b;text-decoration:none}.btn:disabled{opacity:.5}.module{display:flex;flex-direction:column;gap:10px}.module p{color:var(--muted);flex:1;margin:0}.module .btn{align-self:start}.section{margin-top:28px}.note{border-left:3px solid var(--cyan);background:#12263a;padding:16px;border-radius:6px;color:#c6d7e8}.drop{border:2px dashed #39617d;border-radius:12px;padding:30px;text-align:center;background:#0d2236}.drop.drag{background:#20465b}.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:16px 0}.field{width:100%;background:#0a1727;border:1px solid #3b5a76;border-radius:8px;color:white;padding:10px}.tablebox{overflow:auto;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;min-width:750px;text-align:left}th,td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#11263c;color:#a7bed3;font-size:11px;text-transform:uppercase}tr:last-child td{border:0}.mono{font:12px/1.5 Consolas,monospace;overflow-wrap:anywhere}.chip{font-size:11px;border:1px solid #4a647b;border-radius:12px;padding:4px 8px}.chip.high{color:#ff8392;border-color:#a24a5b}.chip.medium{color:#ffce7b;border-color:#87683b}.chip.low{color:#79d9ae;border-color:#42775e}.status{font-size:12px;color:var(--muted)}.footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;color:var(--muted);font-size:12px}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:720px){.layout{display:block}aside{position:static;height:auto;padding:15px}.brand{margin:0 0 12px}.sidefoot{display:none}nav{display:flex;overflow:auto}.nav{width:auto;white-space:nowrap}.main{padding:0 16px 30px}.grid,.cards,.filters{grid-template-columns:1fr}.top{flex-wrap:wrap}.page{margin-top:22px}}
+
+/* Editor integrado de relatório */
+.report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.report-form label{display:block;color:#d4e4f4;font-weight:650;margin:14px 0 6px}
+.report-form textarea{min-height:100px;resize:vertical}
+.report-form .field{display:block}
+.report-form .panel{margin:18px 0}
+.report-actions{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.report-actions .btn{margin:0}.report-intro{margin-bottom:20px}
+@media(max-width:720px){.report-grid{grid-template-columns:1fr}}
 </style></head><body>
 <div class="layout"><aside><div class="brand">🛡 SECURITY LOG<br>ANALYSIS<small>BLUE TEAM LAB</small></div><nav>
 <button class="nav active" data-view="home">◈ Dashboard</button><button class="nav" data-view="analysis">⌕ Analisar logs</button><button class="nav" data-view="playbooks">▣ Playbooks</button><button class="nav" data-view="cases">◇ Estudos de caso</button><button class="nav" data-view="reports">▤ Relatórios</button>
-</nav><div class="sidefoot">Sem login · Sem banco de dados<br>Arquivos processados localmente</div></aside>
+</nav></aside>
 <main class="main"><header class="top"><small>GG SECURITY / INVESTIGATION LAB</small><a href="https://github.com/geovanniandrade/security-log-analysis" target="_blank" rel="noopener noreferrer">↗ GitHub / Repositório</a></header><div class="page">
 <section class="view active" id="home"><div class="eyebrow">INVESTIGATION WORKSPACE</div><h1>Security Log Analysis</h1><p class="lead">Laboratório educacional de investigação de logs de Firewall, NDR, Wazuh, Windows e Linux. Explore fontes de evidência, identifique padrões e documente conclusões.</p><button class="btn primary" data-go="analysis">⌕ Iniciar análise</button><button class="btn" data-go="playbooks">▣ Explorar playbooks</button><div class="grid">
 <div class="panel"><span class="label">Eventos carregados</span><strong class="metric" id="total">0</strong><span class="label">Na sessão atual</span></div><div class="panel"><span class="label">Suspeitos (heurística)</span><strong class="metric" id="susp">0</strong><span class="label">Não é veredito</span></div><div class="panel"><span class="label">Fontes</span><strong class="metric" id="sources">0</strong><span class="label">Tipos identificados</span></div><div class="panel"><span class="label">IPs de origem</span><strong class="metric" id="ips">0</strong><span class="label">Quando disponíveis</span></div></div>
@@ -24,9 +34,57 @@
 <div class="panel module"><h2>🧩 Correlation</h2><p>Timeline, IoCs e evidências entre fontes.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/tree/main/06-Log-Correlation" target="_blank" rel="noopener">Abrir guia ↗</a></div></div></section>
 <section class="view" id="cases"><div class="eyebrow">PRACTICAL INVESTIGATIONS</div><h1>Estudos de caso</h1><div class="panel"><span class="eyebrow">CASE 001 · CENÁRIO SIMULADO</span><h2>Repeated SSH Authentication Failures</h2><p class="muted">Quatro tentativas SSH sem sucesso, alerta Wazuh e evento de firewall. A investigação diferencia atividade suspeita de comprometimento comprovado.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/tree/main/Case-Studies/001-SSH-Brute-Force" target="_blank" rel="noopener">Ler investigação ↗</a><button class="btn primary" id="case-demo">Explorar eventos</button></div><div class="note section">Os endereços da demonstração são reservados para documentação e não representam ameaças reais.</div></section>
 <section class="view" id="reports"><div class="eyebrow">EVIDENCE & REPORTING</div><h1>Templates e relatórios</h1><div class="cards">
-<div class="panel module"><h2>📝 Relatório técnico</h2><p>Escopo, evidências, IoCs, MITRE e conclusão.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/blob/main/Templates/Investigation-Report.md" target="_blank" rel="noopener">Abrir ↗</a></div>
+<div class="panel module"><h2>📝 Relatório técnico</h2><p>Escopo, evidências, IoCs, MITRE e conclusão.</p><button class="btn" data-go="report-editor">Preencher relatório →</button></div>
 <div class="panel module"><h2>📦 Registro de evidências</h2><p>Integridade, origem e cadeia de custódia.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/blob/main/Templates/Evidence-Register.md" target="_blank" rel="noopener">Abrir ↗</a></div>
 <div class="panel module"><h2>✅ Checklist de triagem</h2><p>Sequência de validação e documentação.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/blob/main/Templates/Triage-Checklist.md" target="_blank" rel="noopener">Abrir ↗</a></div></div><div class="panel section"><h2>Ficha HTML offline</h2><p class="muted">Formulário local com exportação TXT e impressão em PDF.</p><a class="btn primary" href="Templates/Investigation-Worksheet.html" target="_blank" rel="noopener">Abrir ficha ↗</a></div></section>
+
+<section class="view" id="report-editor">
+  <div class="eyebrow">EVIDENCE & REPORTING / EDITOR</div>
+  <h1>Relatório técnico de investigação</h1>
+  <p class="lead report-intro">Preencha os dados da investigação e exporte o documento. Os campos permanecem apenas nesta página; salve o arquivo JSON para continuar posteriormente.</p>
+  <div class="report-actions">
+    <button class="btn" data-go="reports">← Voltar aos relatórios</button>
+    <button class="btn primary" type="button" id="report-print">🖨 Gerar PDF / Imprimir</button>
+    <button class="btn" type="button" id="report-json">↓ Salvar JSON</button>
+    <button class="btn" type="button" id="report-html">↓ Exportar HTML</button>
+    <button class="btn" type="button" id="report-load">↑ Importar JSON</button>
+    <button class="btn" type="button" id="report-clear">✕ Limpar formulário</button>
+    <input id="report-file" hidden type="file" accept=".json,application/json">
+  </div>
+  <p class="status" id="report-status" role="status">Nenhum dado enviado ou armazenado automaticamente.</p>
+  <form id="report-form" class="report-form" autocomplete="off">
+    <div class="panel"><h2>01 · Identificação do caso</h2>
+      <div class="report-grid">
+        <div><label for="r-case">ID do caso</label><input class="field" id="r-case" placeholder="CASE-002"></div>
+        <div><label for="r-analyst">Analista responsável</label><input class="field" id="r-analyst" placeholder="Nome do analista"></div>
+        <div><label for="r-date">Data da investigação</label><input class="field" id="r-date" type="date"></div>
+        <div><label for="r-status">Status / veredito</label><select class="field" id="r-status"><option value="Em investigação">Em investigação</option><option value="Confirmado">Confirmado</option><option value="Provável">Provável</option><option value="Não confirmado">Não confirmado</option><option value="Inconclusivo">Inconclusivo</option></select></div>
+      </div>
+      <label for="r-title">Título do incidente</label><input class="field" id="r-title" placeholder="Ex.: Tentativas repetidas de autenticação SSH">
+    </div>
+    <div class="panel"><h2>02 · Objetivo e escopo</h2>
+      <label for="r-scope">O que foi investigado? Quais ativos, fontes e intervalos?</label><textarea class="field" id="r-scope" placeholder="Descreva o objetivo, escopo autorizado e ambiente analisado."></textarea>
+      <label for="r-hypothesis">Hipótese inicial</label><textarea class="field" id="r-hypothesis" placeholder="Comportamento suspeito e possíveis explicações benignas."></textarea>
+    </div>
+    <div class="panel"><h2>03 · Fontes e evidências</h2>
+      <label for="r-evidence">Logs, artefatos, integridade e período (com fuso horário)</label><textarea class="field" id="r-evidence" placeholder="EV-001 | arquivo / fonte | UTC | SHA-256 verificado | observações"></textarea>
+      <label for="r-timeline">Linha do tempo</label><textarea class="field" id="r-timeline" placeholder="2026-11-10 14:00:01 UTC | Linux | Falha SSH | EV-001 linha 2"></textarea>
+    </div>
+    <div class="panel"><h2>04 · Análise técnica</h2>
+      <label for="r-findings">Achados, filtros e correlação</label><textarea class="field" id="r-findings" placeholder="Quais fatos são sustentados pelos logs? Inclua IDs ou linhas de eventos."></textarea>
+      <label for="r-iocs">Indicadores de comprometimento (IoCs)</label><textarea class="field" id="r-iocs" placeholder="Indicador | tipo | evidência | contexto | confiança"></textarea>
+      <label for="r-mitre">MITRE ATT&CK (quando aplicável)</label><textarea class="field" id="r-mitre" placeholder="Técnica e justificativa com referência a evidência."></textarea>
+    </div>
+    <div class="panel"><h2>05 · Conclusão e plano de ação</h2>
+      <label for="r-confidence">Confiança da análise</label><select class="field" id="r-confidence"><option value="Não definida">Não definida</option><option value="Baixa">Baixa</option><option value="Média">Média</option><option value="Alta">Alta</option></select>
+      <label for="r-limitations">Lacunas, evidências contrárias e limitações</label><textarea class="field" id="r-limitations"></textarea>
+      <label for="r-conclusion">Conclusão técnica</label><textarea class="field" id="r-conclusion"></textarea>
+      <label for="r-actions">Recomendações e próximos passos</label><textarea class="field" id="r-actions"></textarea>
+    </div>
+  </form>
+  <div class="report-actions"><button class="btn primary" type="button" id="report-print-bottom">🖨 Gerar PDF / Imprimir</button><button class="btn" data-go="reports">← Voltar</button></div>
+  <div class="note">Privacidade: o relatório é preenchido e exportado localmente. Não existe envio para servidor nem salvamento automático. Evite compartilhar relatórios que contenham informações confidenciais.</div>
+</section>
 <footer class="footer">Security Log Analysis · Laboratório educacional de DFIR e Threat Hunting · Nenhum arquivo de usuário é salvo no GitHub</footer>
 </div></main></div>
 <script>
@@ -63,4 +121,41 @@ $("drop").ondragleave=()=>$("drop").classList.remove("drag");
 $("drop").ondrop=e=>{e.preventDefault();$("drop").classList.remove("drag");if(e.dataTransfer.files[0])handle(e.dataTransfer.files[0])};
 ["query","source","severity"].forEach(id=>$(id).addEventListener(id==="query"?"input":"change",refresh));
 $("export").onclick=()=>{let cols=["timestamp","source","src_ip","host","event","severity"];const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';let str=[cols.join(","),...filtered.map(x=>[x.time,x.source,x.ip,x.host,x.event,x.sev].map(quote).join(","))].join("\r\n");let url=URL.createObjectURL(new Blob(["\uFEFF"+str],{type:"text/csv;charset=utf-8"}));let a=document.createElement("a");a.href=url;a.download="security-log-analysis-filtered.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+
+/* Editor local de relatório: sem dependências, rede ou persistência */
+const reportFields=[
+ ["case","ID do caso"],["analyst","Analista"],["date","Data da investigação"],["status","Status / veredito"],
+ ["title","Título"],["scope","Objetivo e escopo"],["hypothesis","Hipótese inicial"],
+ ["evidence","Fontes de logs e evidências"],["timeline","Linha do tempo"],
+ ["findings","Achados técnicos e correlação"],["iocs","IoCs"],["mitre","MITRE ATT&CK"],
+ ["confidence","Confiança"],["limitations","Limitações e evidências contrárias"],
+ ["conclusion","Conclusão técnica"],["actions","Recomendações e próximos passos"]
+];
+function reportData(){return Object.fromEntries(reportFields.map(([id])=>[id,$("r-"+id).value]))}
+function reportFill(data){reportFields.forEach(([id])=>{if(typeof data[id]==="string")$("r-"+id).value=data[id]});$("report-status").textContent="Relatório carregado localmente."}
+function reportMessage(message){$("report-status").textContent=message}
+function reportDownload(filename,content,type){
+ const url=URL.createObjectURL(new Blob([content],{type}));const a=document.createElement("a");a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
+}
+function reportDocument(){
+ const data=reportData();const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const sections=reportFields.map(([id,label])=>'<section><h2>'+escapeHtml(label)+'</h2><div class="value">'+escapeHtml(data[id]||"Não informado")+'</div></section>').join("");
+ return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Relatório de Investigação - Security Log Analysis</title><style>body{font-family:Arial,sans-serif;color:#172033;max-width:850px;margin:38px auto;padding:0 24px;line-height:1.55}h1{border-bottom:3px solid #1c637e;padding-bottom:14px}h2{font-size:15px;color:#1a607c;margin:0 0 7px}section{break-inside:avoid;border-bottom:1px solid #d9e0e6;padding:13px 0}.value{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}small{color:#64748b}@page{size:A4;margin:18mm}@media print{body{margin:0;padding:0}}</style></head><body><h1>Security Log Analysis</h1><p>Relatório técnico de investigação</p>'+sections+'<p><small>Relatório gerado localmente. Valide as evidências e remova informações sensíveis antes de compartilhar.</small></p></body></html>';
+}
+$("report-json").onclick=()=>{reportDownload("security-log-report.json",JSON.stringify({format:"security-log-report",version:1,fields:reportData()},null,2),"application/json;charset=utf-8");reportMessage("JSON exportado. Guarde o arquivo para continuar depois.")};
+$("report-html").onclick=()=>{reportDownload("security-log-report.html",reportDocument(),"text/html;charset=utf-8");reportMessage("HTML exportado localmente.")};
+$("report-load").onclick=()=>$("report-file").click();
+$("report-file").onchange=async()=>{
+ const f=$("report-file").files[0];$("report-file").value="";if(!f)return;
+ if(f.size>1024*1024){reportMessage("Arquivo JSON excede 1 MB.");return}
+ try{const payload=JSON.parse(await f.text());if(payload.format!=="security-log-report"||payload.version!==1||!payload.fields||typeof payload.fields!=="object")throw Error("Formato não reconhecido");reportFill(payload.fields)}
+ catch(e){reportMessage("Não foi possível importar JSON: "+e.message)}
+};
+$("report-clear").onclick=()=>{if(window.confirm("Limpar todos os campos deste relatório?")){$("report-form").reset();reportMessage("Campos limpos.")}};
+function printReport(){
+ const win=window.open("","_blank");
+ if(!win){reportMessage("O navegador bloqueou a janela de impressão. Use Exportar HTML e imprima o arquivo.");return}
+ win.document.open();win.document.write(reportDocument());win.document.close();win.focus();win.print();reportMessage("Janela de impressão aberta. Escolha Salvar como PDF no navegador.");
+}
+$("report-print").onclick=printReport;$("report-print-bottom").onclick=printReport;
 </script></body></html>
