@@ -1,0 +1,17 @@
+# Não versionar evidências reais ou sensíveis
+*.pcap
+*.pcapng
+*.evtx
+*.etl
+*.log
+*.har
+*.dmp
+*.dump
+.env
+.env.*
+!*.example
+private/
+evidence/
+raw-logs/
+node_modules/
+.DS_Store

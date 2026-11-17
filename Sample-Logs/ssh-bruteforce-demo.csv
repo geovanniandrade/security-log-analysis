@@ -1,0 +1,8 @@
+timestamp_utc,source,host,src_ip,username,event,success,detail
+2026-11-10T14:00:01Z,linux,lab-linux-01,198.51.100.23,admin,ssh_auth,false,Failed password
+2026-11-10T14:00:03Z,linux,lab-linux-01,198.51.100.23,root,ssh_auth,false,Failed password
+2026-11-10T14:00:05Z,linux,lab-linux-01,198.51.100.23,test,ssh_auth,false,Invalid user
+2026-11-10T14:00:07Z,linux,lab-linux-01,198.51.100.23,admin,ssh_auth,false,Failed password
+2026-11-10T14:00:08Z,wazuh,lab-linux-01,198.51.100.23,,alert,,Multiple SSH authentication failures
+2026-11-10T14:00:10Z,firewall,lab-fw-01,198.51.100.23,,connection,,"TCP 22 allowed toward lab-linux-01"
+2026-11-10T14:05:00Z,linux,lab-linux-01,203.0.113.8,analyst,ssh_auth,true,Accepted publickey
