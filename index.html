@@ -14,17 +14,112 @@
 .report-actions{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
 .report-actions .btn{margin:0}.report-intro{margin-bottom:20px}
 @media(max-width:720px){.report-grid{grid-template-columns:1fr}}
+
+.guide-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}.guide-tab{border:1px solid #345571;border-radius:9px;background:#11283c;color:#b6cbdf;padding:10px 14px}.guide-tab.active,.guide-tab:hover{background:#174d63;border-color:#3ca6bc;color:#fff}.guide-panel{display:none}.guide-panel.active{display:block}.guide-panel h3{margin:20px 0 9px}.guide-panel ol{padding-left:24px}.guide-panel li{margin:9px 0}.guide-code{white-space:pre-wrap;overflow-wrap:anywhere;background:#061321;color:#d5f4ff;border:1px solid #33546c;padding:16px;border-radius:9px;font:12px/1.6 Consolas,monospace;user-select:text}.guide-hint{background:#132b42;border-left:3px solid #3cc4d4;padding:12px 16px;border-radius:6px;margin:18px 0}.guide-callout{color:#c8d6e4}.guide-panel .btn{margin-top:8px}
 </style></head><body>
 <div class="layout"><aside><div class="brand">🛡 GG SECURITY LOG<br>ANALYSIS<small>BLUE TEAM LAB</small></div><nav>
-<button class="nav active" data-view="home">◈ Dashboard</button><button class="nav" data-view="analysis">⌕ Analisar logs</button><button class="nav" data-view="playbooks">▣ Playbooks</button><button class="nav" data-view="cases">◇ Estudos de caso</button><button class="nav" data-view="reports">▤ Relatórios</button>
+<button class="nav active" data-view="home">◈ Dashboard</button><button class="nav" data-view="analysis">⌕ Analisar logs</button><button class="nav" data-view="export-guides">▤ Como exportar logs</button><button class="nav" data-view="playbooks">▣ Playbooks</button><button class="nav" data-view="cases">◇ Estudos de caso</button><button class="nav" data-view="reports">▤ Relatórios</button>
 </nav></aside>
 <main class="main"><header class="top"><small>GG SECURITY / INVESTIGATION LAB</small><a href="https://github.com/geovanniandrade/security-log-analysis" target="_blank" rel="noopener noreferrer">↗ GitHub / Repositório</a></header><div class="page">
 <section class="view active" id="home"><div class="eyebrow">INVESTIGATION WORKSPACE</div><h1>Security Log Analysis</h1><p class="lead">Laboratório educacional de investigação de logs de Firewall, NDR, Wazuh, Windows e Linux. Explore fontes de evidência, identifique padrões e documente conclusões.</p><button class="btn primary" data-go="analysis">⌕ Iniciar análise</button><button class="btn" data-go="playbooks">▣ Explorar playbooks</button><div class="grid">
 <div class="panel"><span class="label">Eventos carregados</span><strong class="metric" id="total">0</strong><span class="label">Na sessão atual</span></div><div class="panel"><span class="label">Suspeitos (heurística)</span><strong class="metric" id="susp">0</strong><span class="label">Não é veredito</span></div><div class="panel"><span class="label">Fontes</span><strong class="metric" id="sources">0</strong><span class="label">Tipos identificados</span></div><div class="panel"><span class="label">IPs de origem</span><strong class="metric" id="ips">0</strong><span class="label">Quando disponíveis</span></div></div>
 <div class="cards"><div class="panel"><h2>🔎 Investigações</h2><p class="muted">Análise de eventos, contexto, hipóteses alternativas e evidências.</p><button class="btn" data-go="cases">Ver estudo de caso</button></div><div class="panel"><h2>📚 Guias</h2><p class="muted">Seis módulos técnicos de triagem, análise e correlação.</p><button class="btn" data-go="playbooks">Ver módulos</button></div><div class="panel"><h2>🔐 Privacidade</h2><p class="muted">Sem backend, upload para servidor, banco de dados ou salvamento automático.</p><button class="btn" data-go="analysis">Testar localmente</button></div></div><div class="note section">* Indicadores de suspeita são apenas heurísticas de triagem. Um alerta, bloqueio ou falha de login isolada não comprova ataque ou comprometimento.</div></section>
 <section class="view" id="analysis"><div class="eyebrow">LOCAL LOG WORKBENCH</div><h1>Analisar logs</h1><p class="lead">Importe arquivos CSV, JSON, JSONL, TXT ou LOG até 5 MB. A análise ocorre no navegador, sem transmissão dos dados. Formatos proprietários podem exigir adaptação.</p>
-<div class="panel"><div class="drop" id="drop"><h2>📂 Importe seus logs</h2><p class="muted">Arraste o arquivo aqui ou selecione no computador.</p><input id="file" type="file" accept=".csv,.json,.jsonl,.txt,.log" hidden><button class="btn primary" id="pick">Selecionar arquivo</button></div><div class="section"><button class="btn" id="demo">▶ Carregar demonstração</button><button class="btn" id="clear">✕ Limpar</button><button class="btn" id="export" disabled>↓ Exportar CSV</button></div><div role="status" class="status" id="status">Nenhum evento carregado.</div></div>
+<div class="panel"><p class="muted">Não sabe onde encontrar os registros? <button class="btn" data-go="export-guides" type="button">📘 Como exportar logs de cada plataforma</button></p><div class="drop" id="drop"><h2>📂 Importe seus logs</h2><p class="muted">Arraste o arquivo aqui ou selecione no computador.</p><input id="file" type="file" accept=".csv,.json,.jsonl,.txt,.log" hidden><button class="btn primary" id="pick">Selecionar arquivo</button></div><div class="section"><button class="btn" id="demo">▶ Carregar demonstração</button><button class="btn" id="clear">✕ Limpar</button><button class="btn" id="export" disabled>↓ Exportar CSV</button></div><div role="status" class="status" id="status">Nenhum evento carregado.</div></div>
 <div class="panel section"><h2>Eventos normalizados</h2><div class="filters"><input class="field" id="query" placeholder="Buscar IP, host, mensagem..."><select class="field" id="source"><option value="">Todas as fontes</option></select><select class="field" id="severity"><option value="">Todas as severidades</option><option value="high">Alto</option><option value="medium">Médio</option><option value="low">Baixo / Info</option></select></div><p class="status" id="count">0 eventos</p><div class="tablebox"><table><thead><tr><th>Horário</th><th>Fonte</th><th>IP / host</th><th>Evento</th><th>Severidade*</th></tr></thead><tbody id="rows"><tr><td colspan="5">Importe logs ou abra a demonstração.</td></tr></tbody></table></div><p class="status">Até 500 eventos exibidos, 10.000 processados por sessão. A exportação respeita os filtros.</p></div></section>
+
+<section class="view" id="export-guides">
+<div class="eyebrow">KNOWLEDGE BASE / DATA COLLECTION</div>
+<h1>Como exportar logs</h1>
+<p class="lead">Guias de coleta para preparar arquivos compatíveis com o Security Log Analysis. Selecione a origem, siga as etapas e depois abra <strong>Analisar logs</strong>. Não é necessário Excel para coletar logs.</p>
+<div class="note"><strong>Antes de começar:</strong> faça coletas apenas em sistemas sob sua autorização. Registros podem conter nomes, IPs, caminhos, tokens e dados pessoais. Esta interface não envia arquivos ao servidor, mas arquivos que você baixar ou compartilhar exigem proteção. Preserve o original e, se possível, seu SHA-256 antes de transformar os dados.</div>
+<div class="guide-tabs" role="tablist" aria-label="Escolher plataforma">
+<button class="guide-tab active" type="button" data-guide="windows" role="tab" aria-selected="true">🪟 Windows</button>
+<button class="guide-tab" type="button" data-guide="fortigate" role="tab" aria-selected="false">🔥 FortiGate</button>
+<button class="guide-tab" type="button" data-guide="wazuh" role="tab" aria-selected="false">🛡️ Wazuh</button>
+<button class="guide-tab" type="button" data-guide="ndr" role="tab" aria-selected="false">🌐 NDR</button>
+<button class="guide-tab" type="button" data-guide="linux" role="tab" aria-selected="false">🐧 Linux</button>
+<button class="guide-tab" type="button" data-guide="excel" role="tab" aria-selected="false">📊 Excel / CSV</button>
+</div>
+<div class="guide-panel active" data-guide-panel="windows" role="tabpanel">
+<div class="panel"><div class="eyebrow">WINDOWS EVENT LOGS</div><h2>Exportar eventos do Windows</h2>
+<p class="muted">Recomendado: exportar como CSV usando PowerShell. O formato EVTX original é útil para preservação forense, mas <strong>não é interpretado diretamente</strong> pelo analisador atual.</p>
+<h3>Opção A — PowerShell (CSV pronto para importar)</h3>
+<ol><li>Abra o menu Iniciar, pesquise <strong>PowerShell</strong> e execute como administrador.</li><li>Copie o comando abaixo para exportar até <strong>200 eventos do log Security nas últimas 24 horas</strong>.</li><li>Procure <code>WindowsSecurity.csv</code> na pasta <code>SecurityLogAnalysis</code> da sua área de trabalho.</li><li>No menu <strong>Analisar logs</strong>, selecione o CSV e filtre por mensagem, host ou severidade.</li></ol>
+<pre class="guide-code" id="cmd-windows"># PowerShell — exportação CSV (últimas 24 horas)
+$saida = Join-Path $env:USERPROFILE 'Desktop\SecurityLogAnalysis'
+New-Item -ItemType Directory -Path $saida -Force | Out-Null
+$eventos = Get-WinEvent -FilterHashtable @{
+    LogName = 'Security'
+    StartTime = (Get-Date).AddDays(-1)
+} -MaxEvents 200 -ErrorAction Stop
+$eventos | ForEach-Object {
+    [PSCustomObject]@{
+        timestamp = $_.TimeCreated.ToString('yyyy-MM-dd HH:mm:ss')
+        source    = 'Windows Security'
+        src_ip    = ''
+        host      = $_.MachineName
+        event     = "Event ID $($_.Id): $($_.Message -replace '[\r\n]+',' ')"
+        severity  = if ($_.Id -in @(4625,4740,1102)) {'high'} else {'low'}
+    }
+} | Export-Csv -Path (Join-Path $saida 'WindowsSecurity.csv') -NoTypeInformation -Encoding UTF8</pre>
+<button class="btn guide-copy" data-copy="cmd-windows">📋 Copiar comando</button>
+<p class="guide-hint">Se o PowerShell não encontrar eventos, aumente a janela de tempo; se faltar permissão, verifique as políticas da máquina. A coluna <code>src_ip</code> foi deixada vazia porque a origem não está presente em todos os eventos; nunca preencha um IP por suposição.</p>
+<h3>Opção B — Visualizador de Eventos</h3>
+<ol><li>Execute <code>eventvwr.msc</code> e abra <strong>Logs do Windows → Segurança</strong>.</li><li>Use <strong>Filtrar Log Atual</strong> para selecionar período e IDs.</li><li>Use <strong>Salvar Todos os Eventos Como...</strong> para preservar o arquivo EVTX original.</li><li>Para analisar no site, converta/exporte para CSV estruturado, por exemplo usando o PowerShell acima.</li></ol>
+<h3>IDs úteis para investigação</h3>
+<div class="tablebox"><table><thead><tr><th>Evento</th><th>Significado</th><th>Nota</th></tr></thead><tbody><tr><td>4624</td><td>Logon bem-sucedido</td><td>Observe tipo e origem</td></tr><tr><td>4625</td><td>Falha de logon</td><td>Não confirma ataque isoladamente</td></tr><tr><td>4672</td><td>Privilégios especiais atribuídos</td><td>Exige contexto</td></tr><tr><td>4720</td><td>Conta criada</td><td>Verifique autorização</td></tr><tr><td>4740</td><td>Conta bloqueada</td><td>Correlacione com falhas</td></tr><tr><td>1102</td><td>Log de auditoria apagado</td><td>Investigue a origem</td></tr></tbody></table></div>
+<p class="status">A severidade do CSV é heurística e não determina o impacto de um evento.</p>
+</div></div>
+<div class="guide-panel" data-guide-panel="fortigate" role="tabpanel">
+<div class="panel"><div class="eyebrow">NETWORK SECURITY</div><h2>FortiGate / FortiAnalyzer</h2><p class="muted">Os nomes das opções mudam conforme a versão do FortiOS, FortiAnalyzer e permissões da conta.</p>
+<h3>Exportação pela interface</h3>
+<ol><li>Acesse o <strong>FortiGate</strong> ou <strong>FortiAnalyzer</strong> com uma conta autorizada.</li><li>No FortiGate, abra <strong>Log &amp; Report</strong> e selecione uma categoria, como <strong>Forward Traffic</strong>, <strong>Local Traffic</strong> ou <strong>Security Events</strong> (se disponível).</li><li>No FortiAnalyzer, utilize a visualização de logs correspondente à unidade e categoria desejadas.</li><li>Defina o intervalo e filtre por IP de origem/destino, ação (<code>accept</code>/<code>deny</code>), política ou porta.</li><li>Utilize a opção de download/exportação disponível para gerar CSV ou texto. Se não estiver disponível, isso pode depender de versão, licença ou perfil de acesso.</li><li>Importe o arquivo na plataforma e confira se os campos foram reconhecidos corretamente.</li></ol>
+<h3>Exemplo de formato de log bruto</h3>
+<pre class="guide-code" id="cmd-fortigate">date=2026-11-10 time=14:00:10 devname="FW-LAB" type="traffic" subtype="forward" srcip=192.0.2.10 dstip=198.51.100.20 dstport=443 action="deny" policyid=7</pre>
+<button class="btn guide-copy" data-copy="cmd-fortigate">📋 Copiar exemplo</button>
+<div class="guide-hint">Arquivo recomendado: <strong>CSV com colunas</strong> <code>timestamp,source,src_ip,host,event,severity</code> ou logs <code>key=value</code> após validação do parser. No analisador atual, registros proprietários podem aparecer como texto simples e exigir adaptação.</div>
+<h3>O que observar?</h3><p>Origem e destino, portas, política, interface, bytes, sessão, direção, timezone e a distinção entre tráfego bloqueado e ameaça confirmada.</p></div></div>
+<div class="guide-panel" data-guide-panel="wazuh" role="tabpanel">
+<div class="panel"><div class="eyebrow">HOST DETECTION</div><h2>Wazuh</h2>
+<h3>Opção A — Dashboard</h3><ol><li>Abra o Wazuh Dashboard com permissão para consulta.</li><li>Entre na área de eventos/alertas da instalação.</li><li>Filtre intervalo, agente, regra, severidade e índices relevantes.</li><li>Quando houver opção, exporte os resultados em <strong>JSON</strong> ou <strong>CSV</strong>. Disponibilidade varia com a versão e interface.</li><li>Importe o arquivo e valide os campos de cada alerta.</li></ol>
+<h3>Opção B — Alertas em JSON (servidor Linux, com autorização)</h3><p class="muted">Em muitas instalações o arquivo de alertas estruturados fica em <code>/var/ossec/logs/alerts/alerts.json</code>. Cada linha normalmente contém um objeto JSON.</p>
+<pre class="guide-code" id="cmd-wazuh"># No servidor Wazuh, copiar uma amostra para laboratório autorizado
+sudo tail -n 200 /var/ossec/logs/alerts/alerts.json > wazuh-alerts-demo.jsonl</pre>
+<button class="btn guide-copy" data-copy="cmd-wazuh">📋 Copiar comando</button>
+<p class="guide-hint">Extensão recomendada: <strong>.jsonl</strong> (um JSON por linha). Na interface, procure <code>timestamp</code>, <code>rule.level</code>, <code>rule.description</code>, <code>agent.name</code>, <code>data.srcip</code> e <code>full_log</code>. Faça anonimização antes de compartilhar.</p>
+<h3>Interpretação</h3><p>Um alerta de alta severidade indica prioridade de investigação, não comprometimento confirmado. Verifique o evento bruto, histórico do agente, correlação e possíveis falsos positivos.</p></div></div>
+<div class="guide-panel" data-guide-panel="ndr" role="tabpanel">
+<div class="panel"><div class="eyebrow">NETWORK DETECTION & RESPONSE</div><h2>NDR</h2><p class="muted">Cada NDR possui menus e esquemas diferentes. Este roteiro é independente de fabricante.</p>
+<h3>Exportar alertas ou fluxos</h3><ol><li>Entre no console NDR e localize <strong>Detections / Alerts / Events / Network Flows</strong>, conforme a ferramenta.</li><li>Selecione o período e os ativos sob investigação.</li><li>Filtre por IP, DNS, protocolo, porta, assinatura ou tipo de anomalia.</li><li>Exporte em <strong>CSV</strong> ou <strong>JSON</strong>, caso haja suporte.</li><li>Antes da importação, confira se existe pelo menos horário, fonte, IP/host e descrição do evento.</li><li>Se o formato não for reconhecido, mapeie os campos para o padrão CSV descrito na guia Excel/CSV.</li></ol>
+<h3>Exemplo de registro para teste</h3><pre class="guide-code" id="cmd-ndr">timestamp,source,src_ip,host,event,severity
+2026-11-10 14:10:00,NDR,192.0.2.20,LAB-PC-01,Unusual DNS volume,medium</pre><button class="btn guide-copy" data-copy="cmd-ndr">📋 Copiar exemplo CSV</button>
+<div class="guide-hint">Telemetria de fluxo não equivale a captura integral de pacotes. Um alerta de anomalia não comprova C2 ou exfiltração sem outras evidências.</div></div></div>
+<div class="guide-panel" data-guide-panel="linux" role="tabpanel">
+<div class="panel"><div class="eyebrow">LINUX / SYSTEM LOGS</div><h2>Linux</h2><p class="muted">Comandos para hosts Linux autorizados, com <code>systemd</code>. O nome do serviço e os caminhos variam conforme a distribuição.</p>
+<h3>Opção A — journalctl</h3><ol><li>Abra o terminal no host ou VM de laboratório.</li><li>Confirme o período e o serviço que deseja investigar.</li><li>Exporte os registros de SSH em texto com o comando abaixo.</li><li>Importe o arquivo <code>ssh-logs.txt</code>. Logs em texto simples podem exigir interpretação manual adicional.</li></ol>
+<pre class="guide-code" id="cmd-linux"># Ajuste a data e o nome do serviço (ssh ou sshd)
+sudo journalctl -u ssh --since "2026-11-10 00:00:00" --until "2026-11-11 00:00:00" -o short-iso --no-pager > ssh-logs.txt</pre>
+<button class="btn guide-copy" data-copy="cmd-linux">📋 Copiar comando</button>
+<h3>Opção B — arquivos de autenticação</h3>
+<pre class="guide-code" id="cmd-linux-auth"># Debian / Ubuntu (se o arquivo existir)
+sudo grep -Ei 'Failed password|Accepted|Invalid user' /var/log/auth.log > ssh-auth-filtered.txt
+
+# RHEL / derivados (se o arquivo existir)
+sudo grep -Ei 'Failed password|Accepted|Invalid user' /var/log/secure > ssh-auth-filtered.txt</pre>
+<button class="btn guide-copy" data-copy="cmd-linux-auth">📋 Copiar comandos</button>
+<div class="guide-hint">Para obter melhor filtragem e correlação, transforme os eventos em CSV estruturado com timezone, host e origem. Preserve sempre o arquivo original; não altere evidências primárias.</div></div></div>
+<div class="guide-panel" data-guide-panel="excel" role="tabpanel">
+<div class="panel"><div class="eyebrow">STRUCTURED DATA / CSV</div><h2>Excel / CSV</h2>
+<p>Excel é opcional: serve para <strong>preparar</strong> logs ou revisar colunas. O site não aceita <code>.xlsx</code> diretamente.</p>
+<ol><li>Crie uma planilha com o cabeçalho abaixo.</li><li>Preencha uma linha por evento, sem mesclar células.</li><li>Utilize datas com horário claro e anote o timezone original no relatório.</li><li>Em <strong>Arquivo → Salvar como</strong>, selecione <strong>CSV UTF-8</strong>.</li><li>Importe o CSV na aba Analisar logs. A versão do analisador deve ser conferida quanto ao separador aceito; o exemplo abaixo usa vírgulas.</li></ol>
+<pre class="guide-code" id="cmd-excel">timestamp,source,src_ip,host,event,severity
+2026-11-10 14:30:00,Windows Security,192.0.2.10,LAB-PC-01,Event ID 4625: Failed logon,high
+2026-11-10 14:31:00,Firewall,192.0.2.20,FW-LAB,Connection denied,medium
+2026-11-10 14:32:00,NDR,192.0.2.30,LAB-SRV-01,Unusual traffic,medium</pre>
+<button class="btn guide-copy" data-copy="cmd-excel">📋 Copiar exemplo CSV</button><p class="guide-hint">Os endereços 192.0.2.0/24 e 198.51.100.0/24 são exemplos reservados para documentação. Não são IPs de ameaças reais.</p></div></div>
+<div class="panel section"><h2>Pronto para investigar?</h2><p class="muted">Depois de coletar e conferir o formato, importe o arquivo localmente e use os playbooks para interpretar os eventos.</p><button class="btn primary" type="button" data-go="analysis">⌕ Ir para Analisar logs</button><button class="btn" type="button" data-go="playbooks">▣ Ver playbooks</button></div>
+</section>
 <section class="view" id="playbooks"><div class="eyebrow">BLUE TEAM PLAYBOOKS</div><h1>Guias de investigação</h1><p class="lead">Escolha um módulo para consultar campos, hipóteses e etapas de análise. Os guias são arquivos Markdown no próprio GitHub.</p><div class="cards">
 <div class="panel module"><h2>🔥 Firewall Logs</h2><p>Políticas, tráfego, bloqueios, IPs e portas.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/tree/main/01-Firewall-Log-Analysis" target="_blank" rel="noopener">Abrir guia ↗</a></div>
 <div class="panel module"><h2>🌐 NDR Logs</h2><p>Fluxos, DNS, anomalias e padrões de rede.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/tree/main/02-NDR-Log-Analysis" target="_blank" rel="noopener">Abrir guia ↗</a></div>
@@ -90,6 +185,20 @@
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
+
+document.querySelectorAll(".guide-tab").forEach(button=>button.addEventListener("click",()=>{
+ const key=button.dataset.guide;
+ document.querySelectorAll(".guide-tab").forEach(tab=>{const active=tab===button;tab.classList.toggle("active",active);tab.setAttribute("aria-selected",String(active))});
+ document.querySelectorAll(".guide-panel").forEach(panel=>panel.classList.toggle("active",panel.dataset.guidePanel===key));
+}));
+document.querySelectorAll(".guide-copy").forEach(button=>button.addEventListener("click",async()=>{
+ const node=document.getElementById(button.dataset.copy);
+ if(!node)return;
+ const value=node.textContent;
+ try{await navigator.clipboard.writeText(value);button.textContent="✓ Copiado";setTimeout(()=>{button.textContent="📋 Copiar comando"},1800)}
+ catch{const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(node);selection.removeAllRanges();selection.addRange(range);button.textContent="Selecione o texto e pressione Ctrl+C"}
+}));
+
 const demo=[
 ["2026-11-10T14:00:01Z","Linux","198.51.100.23","lab-linux-01","Failed password for admin","high"],
 ["2026-11-10T14:00:03Z","Linux","198.51.100.23","lab-linux-01","Failed password for root","high"],
