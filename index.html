@@ -419,7 +419,7 @@ function loadDetected(rows,label,format){
  $("detect-override").value="auto";
  rebuildDetected();
 }
-load=function(rows,label){loadDetected(rows,label,"Demonstração CSV")};
+load=function(rows,label){loadDetected(rows,label,"Demonstração CSV");detectedOrigin="generic";detectedMeta={origin:"generic",confidence:"Não aplicável",reason:"Demonstração com fontes simuladas mistas (Linux, Wazuh e Firewall). As fontes informadas em cada registro foram preservadas."};rebuildDetected()};
 handle=async function(f){
  if(f.size>5*1024*1024){$("status").textContent="Arquivo excede 5 MB.";return}
  if(!/\.(csv|json|jsonl|txt|log)$/i.test(f.name)){$("status").textContent="Extensão não suportada.";return}
