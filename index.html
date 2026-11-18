@@ -16,9 +16,9 @@
 @media(max-width:720px){.report-grid{grid-template-columns:1fr}}
 
 .guide-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}.guide-tab{border:1px solid #345571;border-radius:9px;background:#11283c;color:#b6cbdf;padding:10px 14px}.guide-tab.active,.guide-tab:hover{background:#174d63;border-color:#3ca6bc;color:#fff}.guide-panel{display:none}.guide-panel.active{display:block}.guide-panel h3{margin:20px 0 9px}.guide-panel ol{padding-left:24px}.guide-panel li{margin:9px 0}.guide-code{white-space:pre-wrap;overflow-wrap:anywhere;background:#061321;color:#d5f4ff;border:1px solid #33546c;padding:16px;border-radius:9px;font:12px/1.6 Consolas,monospace;user-select:text}.guide-hint{background:#132b42;border-left:3px solid #3cc4d4;padding:12px 16px;border-radius:6px;margin:18px 0}.guide-callout{color:#c8d6e4}.guide-panel .btn{margin-top:8px}
-.detect-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.detect-grid>div{padding:12px;border-radius:9px;background:#0a1a2b;border:1px solid var(--line)}.detect-value{display:block;font-size:15px;overflow-wrap:anywhere;margin-top:4px}.detect-value.uncertain{color:#ffcb73}@media(max-width:800px){.detect-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:450px){.detect-grid{grid-template-columns:1fr}}</style></head><body>
+.detect-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.detect-grid>div{padding:12px;border-radius:9px;background:#0a1a2b;border:1px solid var(--line)}.detect-value{display:block;font-size:15px;overflow-wrap:anywhere;margin-top:4px}.detect-value.uncertain{color:#ffcb73}@media(max-width:800px){.detect-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:450px){.detect-grid{grid-template-columns:1fr}}.intel-findings{display:grid;gap:12px;margin-top:14px}.intel-findings article{background:#0b1b2b;border:1px solid var(--line);padding:15px;border-radius:9px}.intel-findings article h3{margin:0 0 5px}.intel-findings p{margin:8px 0}.intel-evidence{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;color:#c3d7e8;background:#091a2c;border-radius:7px;padding:10px;border-left:3px solid #4db6c7}.intel-list{padding-left:24px}.intel-list li{margin:7px 0}.intel-score{color:#ffcf82}.intel-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:15px 0}@media(max-width:620px){.intel-kv{grid-template-columns:1fr}}.intel-kv>div{border:1px solid var(--line);padding:12px;border-radius:8px}.intel-link{overflow-wrap:anywhere}</style></head><body>
 <div class="layout"><aside><div class="brand">🛡 GG SECURITY LOG<br>ANALYSIS<small>BLUE TEAM LAB</small></div><nav>
-<button class="nav active" data-view="home">◈ Dashboard</button><button class="nav" data-view="analysis">⌕ Analisar logs</button><button class="nav" data-view="export-guides">▤ Como exportar logs</button><button class="nav" data-view="playbooks">▣ Playbooks</button><button class="nav" data-view="cases">◇ Estudos de caso</button><button class="nav" data-view="reports">▤ Relatórios</button>
+<button class="nav active" data-view="home">◈ Dashboard</button><button class="nav" data-view="analysis">⌕ Analisar logs</button><button class="nav" data-view="export-guides">▤ Como exportar logs</button><button class="nav" data-view="intel">◎ Inteligência de Ameaças</button><button class="nav" data-view="playbooks">▣ Playbooks</button><button class="nav" data-view="cases">◇ Estudos de caso</button><button class="nav" data-view="reports">▤ Relatórios</button>
 </nav></aside>
 <main class="main"><header class="top"><small>GG SECURITY / INVESTIGATION LAB</small><a href="https://github.com/geovanniandrade/security-log-analysis" target="_blank" rel="noopener noreferrer">↗ GitHub / Repositório</a></header><div class="page">
 <section class="view active" id="home"><div class="eyebrow">INVESTIGATION WORKSPACE</div><h1>Security Log Analysis</h1><p class="lead">Laboratório educacional de investigação de logs de Firewall, NDR, Wazuh, Windows e Linux. Explore fontes de evidência, identifique padrões e documente conclusões.</p><button class="btn primary" data-go="analysis">⌕ Iniciar análise</button><button class="btn" data-go="playbooks">▣ Explorar playbooks</button><div class="grid">
@@ -132,6 +132,44 @@ sudo grep -Ei 'Failed password|Accepted|Invalid user' /var/log/secure > ssh-auth
 2026-11-10 14:32:00,NDR,192.0.2.30,LAB-SRV-01,Unusual traffic,medium</pre>
 <button class="btn guide-copy" data-copy="cmd-excel">📋 Copiar exemplo CSV</button><p class="guide-hint">Os endereços 192.0.2.0/24 e 198.51.100.0/24 são exemplos reservados para documentação. Não são IPs de ameaças reais.</p></div></div>
 <div class="panel section"><h2>Pronto para investigar?</h2><p class="muted">Depois de coletar e conferir o formato, importe o arquivo localmente e use os playbooks para interpretar os eventos.</p><button class="btn primary" type="button" data-go="analysis">⌕ Ir para Analisar logs</button><button class="btn" type="button" data-go="playbooks">▣ Ver playbooks</button></div>
+</section>
+
+<section class="view" id="intel">
+<div class="eyebrow">THREAT INTELLIGENCE / ENRICHMENT</div>
+<h1>Inteligência de Ameaças</h1>
+<p class="lead">Enriqueça suas investigações com referências oficiais MITRE ATT&amp;CK, consulta pontual à NVD e orientações NIST. Não há envio de logs a terceiros.</p>
+<div class="note">As associações abaixo são <strong>hipóteses de triagem</strong> e exigem validação. Um registro parecido com uma técnica MITRE não demonstra automaticamente intrusão ou comprometimento. Consulte o contexto completo do caso antes de emitir o veredito.</div>
+<div class="panel section">
+<div class="row between"><div><div class="eyebrow">MITRE ATT&CK</div><h2>Possíveis técnicas identificadas</h2></div><button class="btn" type="button" id="intel-refresh">↻ Analisar registros da sessão</button></div>
+<p class="muted">O mapeamento utiliza regras locais e os eventos já importados na aba Analisar logs. Os nomes das técnicas apontam para o catálogo MITRE oficial.</p>
+<div id="intel-attack-results" aria-live="polite"><p class="muted">Carregue logs ou a demonstração para consultar técnicas relacionadas.</p></div>
+</div>
+<div class="panel section">
+<div class="eyebrow">CVE / NVD</div><h2>Consultar vulnerabilidade por CVE</h2>
+<p class="muted">Digite um identificador CVE específico. A consulta pública retorna informações oficiais da NVD, quando a API está acessível. Não é realizada uma busca automática por vulnerabilidades com base nos logs.</p>
+<form id="intel-cve-form" class="row">
+<label for="intel-cve-id">Identificador CVE</label>
+<input id="intel-cve-id" class="field" style="max-width:280px" placeholder="Ex.: CVE-2021-44228" autocomplete="off" maxlength="28">
+<button class="btn primary" id="intel-cve-submit" type="submit">🔎 Consultar NVD</button>
+</form>
+<div class="status" id="intel-cve-status" role="status">Informe um CVE para começar.</div>
+<div id="intel-cve-result" aria-live="polite"></div>
+<p class="status">Somente o ID do CVE será transmitido à API NVD. Sem chave de API no navegador. A API pode aplicar limites ou bloquear chamadas; nesse caso, será oferecida uma consulta no site oficial.</p>
+</div>
+<div class="panel section">
+<div class="eyebrow">NIST / INCIDENT RESPONSE</div><h2>Orientações para a investigação</h2>
+<p class="muted">Checklist educacional inspirado nas recomendações do NIST SP 800-61 Rev. 3 e na gestão de evidências. Estas recomendações não substituem seu processo formal de resposta a incidentes.</p>
+<div id="intel-nist-guidance"></div>
+<a class="btn" href="https://csrc.nist.gov/pubs/sp/800/61/r3/final" target="_blank" rel="noopener noreferrer">↗ NIST SP 800-61 Rev. 3</a>
+<a class="btn" href="https://csrc.nist.gov/pubs/sp/800/86/final" target="_blank" rel="noopener noreferrer">↗ NIST SP 800-86</a>
+</div>
+<div class="panel section">
+<h2>Documentação e uso no relatório</h2>
+<p class="muted">Registre técnicas MITRE somente como <strong>possíveis</strong> até reunir evidências suficientes. Uma CVE requer verificação do produto, versão e condições de exploração. O resultado pode ser copiado para o relatório técnico, sem incluir automaticamente logs brutos.</p>
+<button class="btn primary" type="button" id="intel-add-report">＋ Acrescentar referências ao relatório</button>
+<button class="btn" type="button" data-go="report-editor">▤ Abrir relatório técnico</button>
+<p class="status" id="intel-report-status" role="status"></p>
+</div>
 </section>
 <section class="view" id="playbooks"><div class="eyebrow">BLUE TEAM PLAYBOOKS</div><h1>Guias de investigação</h1><p class="lead">Escolha um módulo para consultar campos, hipóteses e etapas de análise. Os guias são arquivos Markdown no próprio GitHub.</p><div class="cards">
 <div class="panel module"><h2>🔥 Firewall Logs</h2><p>Políticas, tráfego, bloqueios, IPs e portas.</p><a class="btn" href="https://github.com/geovanniandrade/security-log-analysis/tree/main/01-Firewall-Log-Analysis" target="_blank" rel="noopener">Abrir guia ↗</a></div>
@@ -440,4 +478,4 @@ $("demo").addEventListener("click",()=>{
  $("detect-format").textContent="CSV de exemplo";
 });
 
-</script></body></html>
+</script><script src="threat-intel.js"></script></body></html>
