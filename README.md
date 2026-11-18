@@ -62,6 +62,22 @@ security-log-analysis/
 
 **5. Conclusão:** classificar como **confirmado, provável, não confirmado ou inconclusivo**, com justificativa e recomendações.
 
+## 🧠 Inteligência de ameaças no GitHub Pages
+
+A interface web oferece uma área **Inteligência de Ameaças** com três funcionalidades:
+
+- **MITRE ATT&CK:** identificação heurística de possíveis técnicas associadas à descrição dos eventos importados. Apresenta trechos de evidências e links para técnicas oficiais. Não é um mecanismo de atribuição ou detecção conclusiva.
+- **CVE / NVD:** consulta pontual à API pública da NVD mediante inserção manual de um identificador CVE. Envia somente o ID informado; se a API pública estiver indisponível ou bloquear a solicitação do navegador, apresenta link para consulta externa. A presença de uma CVE não prova vulnerabilidade do equipamento analisado.
+- **NIST:** checklist orientativo de investigação e links oficiais para [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) e [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final).
+
+Os resultados podem ser inseridos no **formulário de relatório**, para posterior validação pelo analista. Os logs permanecem na memória do navegador e **não são transmitidos** para MITRE, NVD ou outro serviço. Não há login, banco de dados ou chave de API embutida.
+
+**Limitações:** o catálogo MITRE usado para sugestões é um subconjunto inicial de técnicas com padrões de texto; outras técnicas e eventos estruturados podem não ser reconhecidos. Os resultados da NVD dependem de disponibilidade, CORS e limites de acesso público.
+
+[Abrir interface GitHub Pages](https://geovanniandrade.github.io/security-log-analysis/)
+
+---
+
 ## 🧰 Ferramentas úteis
 
 - **FortiGate / FortiAnalyzer:** eventos de tráfego, UTM e políticas (conforme campos disponíveis).
